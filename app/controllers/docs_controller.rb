@@ -16,7 +16,7 @@ class DocsController < ApplicationController
         if @doc.save
             redirect_to @doc
         else
-        render 'new'
+            render 'new'
         end    
     end
     
@@ -36,6 +36,5 @@ class DocsController < ApplicationController
        def doc_params
            params.require(:doc).permit(:title, :content)
        end
-       
            
 end
