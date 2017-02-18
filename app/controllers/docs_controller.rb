@@ -10,11 +10,15 @@
     end  
     
     def new 
-        @doc = current_user.docs.build 
+        @doc = Doc.new
     end
     
     def create
-        @doc = current_user.docs.build(doc_params)
+        if current_user.nil?
+            @doc = Doc.new(doc_params)
+        else
+            @doc = current_user.docs.build(doc_params)
+        end
         
         if @doc.save
             redirect_to @doc
